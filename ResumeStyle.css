@@ -1,79 +1,235 @@
+/* ---------- Design tokens ---------- */
+:root {
+    --bg: #F1F3F5;
+    --surface: #FFFFFF;
+    --ink: #1C2430;
+    --muted: #5B6472;
+    --accent: #2E6F63;
+    --accent-ink: #1F4E45;
+    --accent-soft: #E3EFEC;
+    --border: #E2E5EA;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: LightGrey;
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    background-color: var(--bg);
+    color: var(--ink);
     margin: 0;
-    padding: 15px;
+    padding: 32px 16px;
+    line-height: 1.55;
 }
 
-body, main {
-    line-height: 1.3;
+main {
+    line-height: 1.55;
 }
 
-h1, h2, h3, p {
-    margin: 5px 0;
+.wrap {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    font-family: "Space Grotesk", "Trebuchet MS", Arial, sans-serif;
+    color: var(--ink);
 }
 
 p {
-    margin: 3px 0;
+    margin: 6px 0;
 }
 
+a {
+    color: var(--accent-ink);
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* ---------- Cards / sections ---------- */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 26px 28px;
+    margin: 18px 0;
+}
+
+header.card {
+    text-align: center;
+    border-left: 4px solid var(--accent);
+    padding: 34px 28px 28px;
+}
+
+h1 {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0 0 14px 0;
+    letter-spacing: -0.01em;
+}
+
+header.card > p {
+    max-width: 620px;
+    margin: 18px auto 0;
+    color: var(--muted);
+    text-align: left;
+}
+
+h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    padding-bottom: 12px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+}
+
+h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 42px;
+    height: 3px;
+    background: var(--accent);
+}
+
+h3 {
+    font-size: 17px;
+    margin: 0 0 4px 0;
+}
+
+/* ---------- Contact row ---------- */
 address {
     font-style: normal;
-    text-align: center;
+}
+
+.contact-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.contact-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.contact-pill:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+}
+
+.contact-pill svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+}
+
+/* ---------- Experience ---------- */
+.job {
+    padding: 14px 0;
+}
+
+.job + .job {
+    border-top: 1px solid var(--border);
+}
+
+.job-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 6px 16px;
+    margin-bottom: 6px;
+}
+
+.job-role {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.job-company {
+    color: var(--accent-ink);
+    font-weight: 600;
+}
+
+.job-dates {
+    color: var(--muted);
+    font-size: 13.5px;
+    white-space: nowrap;
 }
 
 ul {
-    margin: 4px 0 10px 0;
+    margin: 4px 0 4px 0;
     padding-left: 20px;
 }
 
 li {
-    margin: 2px 0;
+    margin: 3px 0;
 }
 
-.card {
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 14px;
-    margin: 5px;
+li::marker {
+    color: var(--accent);
 }
 
-h1 {
-    text-align: center;
-    font-size: 50px;
-    margin: 10px 0;
-}
-
-h2 {
-    border-bottom: lightgray 3px solid;
-    padding-bottom: 4px;
-}
-
-/* Projects */
+/* ---------- Projects ---------- */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 12px;
-    margin-top: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 14px;
 }
 
 .project {
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 12px 14px;
-    background: #fafafa;
+    padding: 16px 18px;
+    background: var(--surface);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+    display: flex;
+    flex-direction: column;
 }
 
-.project h3 {
-    margin: 0 0 6px 0;
-    font-size: 17px;
+.project:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.project h3 a {
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.project h3 a:hover {
+    color: var(--accent-ink);
+    text-decoration: underline;
 }
 
 .project p {
-    margin: 0 0 8px 0;
     font-size: 14px;
-    color: #333;
+    color: var(--muted);
+    margin: 0 0 10px 0;
+    flex-grow: 1;
 }
 
 .tags {
@@ -83,39 +239,79 @@ h2 {
 }
 
 .tag {
-    background: #eef2f7;
-    color: #2d3a4a;
+    background: var(--accent-soft);
+    color: var(--accent-ink);
     border-radius: 6px;
-    padding: 2px 8px;
+    padding: 3px 9px;
     font-size: 12px;
+    font-weight: 500;
     white-space: nowrap;
 }
 
+/* ---------- Project detail pages ---------- */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--accent-ink);
+    margin-bottom: 18px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.detail-title {
+    font-size: 30px;
+    margin: 0 0 12px 0;
+}
+
+.detail-summary {
+    color: var(--ink);
+    font-size: 15.5px;
+    max-width: 680px;
+}
+
+.detail-section {
+    margin-top: 22px;
+}
+
+.detail-section h2 {
+    font-size: 17px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+}
+
+.detail-section h2::after {
+    width: 30px;
+    height: 2px;
+}
+
+/* ---------- Responsive ---------- */
 @media screen and (max-width: 412px) {
     body {
-        padding: 10px;
+        padding: 16px 10px;
     }
     h1 {
         font-size: 30px;
     }
     .card {
-        padding: 10px;
-        border-radius: 10px;
+        padding: 18px 16px;
     }
     .project-grid {
         grid-template-columns: 1fr;
     }
+    .job-heading {
+        flex-direction: column;
+        gap: 2px;
+    }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1024px) and (min-width: 413px) {
     body {
-        padding: 25px;
-    }
-    h1 {
-        font-size: 55px;
-    }
-    .card {
-        padding: 20px;
-        border-radius: 15px;
+        padding: 24px 18px;
     }
 }
