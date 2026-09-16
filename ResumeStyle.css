@@ -141,8 +141,9 @@ address {
 }
 
 .contact-pill svg {
-    width: 15px;
-    height: 15px;
+    display: block;
+    width: 13px;
+    height: 13px;
     flex-shrink: 0;
 }
 
